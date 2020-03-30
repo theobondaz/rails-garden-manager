@@ -1,0 +1,143 @@
+  [1m[35m (272.6ms)[0m  [1m[35mCREATE DATABASE "rails-garden-manager_development" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (232.2ms)[0m  [1m[35mCREATE DATABASE "rails-garden-manager_test" ENCODING = 'unicode'[0m
+  ↳ bin/rails:9
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ bin/rails:9
+  [1m[35m (2.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5952389427026727090)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Migrating to CreateGardens (20191125112553)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "gardens" ("id" bigserial primary key, "name" character varying, "banner_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20191125112553_create_gardens.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191125112553"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+Migrating to CreatePlants (20191125113109)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE TABLE "plants" ("id" bigserial primary key, "garden_id" bigint, "name" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_2c5194e718"
+FOREIGN KEY ("garden_id")
+  REFERENCES "gardens" ("id")
+)[0m
+  ↳ db/migrate/20191125113109_create_plants.rb:3
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_plants_on_garden_id" ON "plants"  ("garden_id")[0m
+  ↳ db/migrate/20191125113109_create_plants.rb:3
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191125113109"]]
+  ↳ bin/rails:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ bin/rails:9
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-03-30 10:25:37.681900"], ["updated_at", "2020-03-30 10:25:37.681900"]]
+  ↳ bin/rails:9
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ bin/rails:9
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5952389427026727090)[0m
+  ↳ bin/rails:9
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ bin/rails:9
+Started GET "/" for ::1 at 2020-03-30 03:25:48 -0700
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/nibut0n/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.3/lib/active_record/log_subscriber.rb:98
+Processing by GardensController#index as HTML
+  Rendering gardens/index.html.erb within layouts/application
+  [1m[36mGarden Load (0.6ms)[0m  [1m[34mSELECT "gardens".* FROM "gardens"[0m
+  ↳ app/views/gardens/index.html.erb:42
+  Rendered gardens/index.html.erb within layouts/application (3239.2ms)
+  Rendered shared/_navbar.html.erb (0.5ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+[Webpacker] Compiling...
+Started GET "/" for ::1 at 2020-03-30 03:25:52 -0700
+Processing by GardensController#index as HTML
+  Rendering gardens/index.html.erb within layouts/application
+  [1m[36mGarden Load (0.4ms)[0m  [1m[34mSELECT "gardens".* FROM "gardens"[0m
+  ↳ app/views/gardens/index.html.erb:42
+  Rendered gardens/index.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (1.4ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+[Webpacker] Compiling...
+Started GET "/" for ::1 at 2020-03-30 03:25:52 -0700
+Processing by GardensController#index as HTML
+  Rendering gardens/index.html.erb within layouts/application
+  [1m[36mGarden Load (0.8ms)[0m  [1m[34mSELECT "gardens".* FROM "gardens"[0m
+  ↳ app/views/gardens/index.html.erb:42
+  Rendered gardens/index.html.erb within layouts/application (8.7ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+  Rendered shared/_footer.html.erb (0.2ms)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /home/nibut0n/code/theobondaz/rails-garden-manager/public/packs
+[Webpacker] warning ../package.json: No license field
+
+[Webpacker] Hash: e3128af20ae85497fdaa
+Version: webpack 4.41.2
+Time: 897ms
+Built at: 03/30/2020 3:25:54 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-1a62a4814a25238fb785.js    495 KiB  application  [emitted] [immutable]  application
+js/application-1a62a4814a25238fb785.js.map    622 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-1a62a4814a25238fb785.js js/application-1a62a4814a25238fb785.js.map
+[./app/javascript/packs/application.js] 19 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 6310ms (Views: 6303.7ms | ActiveRecord: 1.4ms)
+
+
+[Webpacker] Compiled all packs in /home/nibut0n/code/theobondaz/rails-garden-manager/public/packs
+[Webpacker] warning ../package.json: No license field
+
+[Webpacker] Hash: e3128af20ae85497fdaa
+Version: webpack 4.41.2
+Time: 928ms
+Built at: 03/30/2020 3:25:55 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-1a62a4814a25238fb785.js    495 KiB  application  [emitted] [immutable]  application
+js/application-1a62a4814a25238fb785.js.map    622 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-1a62a4814a25238fb785.js js/application-1a62a4814a25238fb785.js.map
+[./app/javascript/packs/application.js] 19 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 3165ms (Views: 3163.7ms | ActiveRecord: 0.4ms)
+
+
+[Webpacker] Compiled all packs in /home/nibut0n/code/theobondaz/rails-garden-manager/public/packs
+[Webpacker] warning ../package.json: No license field
+
+[Webpacker] Hash: e3128af20ae85497fdaa
+Version: webpack 4.41.2
+Time: 867ms
+Built at: 03/30/2020 3:25:55 AM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-1a62a4814a25238fb785.js    495 KiB  application  [emitted] [immutable]  application
+js/application-1a62a4814a25238fb785.js.map    622 KiB  application  [emitted] [dev]        application
+                             manifest.json  364 bytes               [emitted]              
+Entrypoint application = js/application-1a62a4814a25238fb785.js js/application-1a62a4814a25238fb785.js.map
+[./app/javascript/packs/application.js] 19 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 472 bytes {application} [built]
+    + 3 hidden modules
+
+Completed 200 OK in 3129ms (Views: 3128.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/gardens/new" for ::1 at 2020-03-30 03:26:02 -0700
+Processing by GardensController#new as HTML
+  Rendering gardens/new.html.erb within layouts/application
+  Rendered gardens/new.html.erb within layouts/application (744.4ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+  Rendered shared/_footer.html.erb (0.1ms)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 761ms (Views: 755.0ms | ActiveRecord: 2.2ms)
+
+
